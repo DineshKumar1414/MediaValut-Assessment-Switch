@@ -95,6 +95,7 @@ button:disabled {
   border-radius: 6px;
   background: var(--bg-soft);
 }
+.stats { color: var(--ink-soft); font-size: 13px; white-space: nowrap; }
 
 .filters {
   display: flex;

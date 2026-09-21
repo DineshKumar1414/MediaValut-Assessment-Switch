@@ -40,4 +40,6 @@ export function getAsset(id: string, signal?: AbortSignal) { return request<Asse
 export function getAssetsByIds(ids: string[]) { return request<{ items: Asset[]; missing: string[] }>(`/api/assets/batch?ids=${ids.join(',')}`); }
 export function updateAsset(id: string, version: number, patch: Partial<Pick<Asset, 'name' | 'status' | 'tags'>>) { return request<Asset>(`/api/assets/${id}`, { method: 'PATCH', body: JSON.stringify({ version, patch }) }); }
 export function bulkSetStatus(ids: string[], status: Asset['status']) { return request<BulkResult>('/api/assets/bulk-status', { method: 'POST', body: JSON.stringify({ ids, status }) }); }
+export interface LibraryStats { total: number; byStatus: Record<string, number>; byKind: Record<string, number>; totalBytes: number; }
+export function getStats() { return request<LibraryStats>('/api/stats'); }
 export const thumbnailUrl = (id: string) => `/api/thumb/${id}.svg`;

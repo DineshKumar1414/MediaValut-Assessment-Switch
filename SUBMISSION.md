@@ -151,6 +151,17 @@ Screenshots in the repo are welcome — link them here.
 
 What you deliberately did not do, and what you would do with another day.
 
+## Optional work completed
+
+- **Live updates:** an `EventSource` subscribes to `asset.updated` and reconciles
+  newer server versions into loaded cache pages. Optimistic bulk-write ids are
+  protected until their requests settle, and events do not reorder the list, so
+  they cannot interrupt the reviewer’s scroll position.
+- **Tests:** `npm test` runs focused Vitest coverage for 50-id chunking, the
+  three-worker concurrency ceiling, and partial-result reconciliation.
+- **Library stats:** the header fetches `/api/stats` independently through the
+  query cache. Its slow response never blocks the search, filters, or asset grid.
+
 ## Critique of the API
 
 What you would change about the backend contract, and what it forced you to do in
